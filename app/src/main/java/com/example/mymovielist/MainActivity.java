@@ -1,120 +1,97 @@
-package com.example.mymovielist;
+package com.example.trojanhorses;
 
-import android.os.Bundle;
-
-import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
-import com.example.mymovielist.adapter.MainRecyclerAdapter;
-import com.example.mymovielist.model.AllCategory;
-import com.example.mymovielist.model.CategoryItem;
-import com.google.android.material.tabs.TabLayout;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.example.trojanhorses.database.DBHelper;
 
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
-
-    private List<Slide> lstSlides;
-    private ViewPager sliderpager;
-    private TabLayout indicator;
-    private RecyclerView mainCategoryRecycler;
-    private MainRecyclerAdapter mainRecyclerAdapter;
-    private DatabaseReference databaseReference;
+    EditText txtTitle,txtDirector,txtDate,txtTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List<CategoryItem> categoryItemList1 = new ArrayList<>();
-        List<CategoryItem> categoryItemList2 = new ArrayList<>();
-        List<CategoryItem> categoryItemList3 = new ArrayList<>();
-        List<CategoryItem> categoryItemList4 = new ArrayList<>();
-        List<CategoryItem> categoryItemList5 = new ArrayList<>();
+        txtTitle = findViewById(R.id.txtTitle);
+        txtDirector = findViewById(R.id.txtDirector);
+        txtDate = findViewById(R.id.txtDate);
+        txtTime = findViewById(R.id.txtTime);
+    }
 
-        sliderpager = findViewById(R.id.slider_pager);
-        indicator = findViewById(R.id.indicator);
+    public void AddNewShow(View view){
+//
+//        Intent intent = new Intent(this,Mytvshows.class);
+//
+        String Title = txtTitle.getText().toString();
+        String Director = txtDirector.getText().toString();
+        String Release = txtDate.getText().toString();
+        String Duration = txtTime.getText().toString();
 
-        lstSlides = new ArrayList<>();
-        lstSlides.add(new Slide(R.drawable.spiderman, "Spider-Man: No Way Home\nComing on December 17, 2021"));
-        lstSlides.add(new Slide(R.drawable.jujutsu, "Jujutsu Kaisen 0\nComing on December 24, 2021  "));
-        lstSlides.add(new Slide(R.drawable.got2, "House of the Dragon\nComing on January 1, 2022"));
-        lstSlides.add(new Slide(R.drawable.batman, "The Batman\nComing on March 4, 2022"));
-        lstSlides.add(new Slide(R.drawable.matrix, "The Matrix 4\nComing on December 22, 2021"));
+        DBHelper dbHelper = new DBHelper(this);
 
-        SliderPagerAdapter sliderpageradapter = new SliderPagerAdapter(this, lstSlides);
-        sliderpager.setAdapter(sliderpageradapter);
+        if(Title.isEmpty()||Director.isEmpty()){
 
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new MainActivity.SliderTimer(), 4000, 6000);
+            Toast.makeText(this,"Enter values",Toast.LENGTH_SHORT).show();
+        }else {
+            long inserted = dbHelper.addShow(Title,Director,Release,Duration);
+        }
+    }
 
-        indicator.setupWithViewPager(sliderpager,true);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Action");
+    public void viewAll(View view){
+        DBHelper dbHelper = new DBHelper(this);
+        List.info = dbHelper.readAll();
 
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        String[] infoArray = (String[]) info.toArray(new String[0]);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("tv show details");
+
+        builder.setItems(infoArray, new DialogInterface.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot di:dataSnapshot.getChildren()){
-                    CategoryItem categoryItem1 = di.getValue(CategoryItem.class);
-                    categoryItemList1.add(new CategoryItem(categoryItem1.getMovieId(),categoryItem1.getMovieImg()));
-                }
+            public void onClick(DialogInterface dialogInterface, int i) {
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                String title = infoArray[i].split(":")[0];
+                //Toast.makeText(MainActivity.this, Toast.LENGTH_SHORT).show();
 
             }
         });
 
-        List<AllCategory> allCategoryList = new ArrayList<>();
-        allCategoryList.add(new AllCategory("Action", categoryItemList1));
-        allCategoryList.add(new AllCategory("Adventure", categoryItemList2));
-        allCategoryList.add(new AllCategory("Anime", categoryItemList3));
-        allCategoryList.add(new AllCategory("TV Shows", categoryItemList4));
-        allCategoryList.add(new AllCategory("Sci-Fi", categoryItemList5));
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
-        setMainCategoryRecycler(allCategoryList);
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
 
     }
 
-    class SliderTimer extends TimerTask{
-        @Override
-        public void run() {
-            MainActivity.this.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if(sliderpager.getCurrentItem()<lstSlides.size()-1) {
-                        sliderpager.setCurrentItem(sliderpager.getCurrentItem()+1);
-                    }
-                    else{
-                        sliderpager.setCurrentItem(0);
-                    }
-                }
-            });
+    public void deleteShow(View view){
+        DBHelper dbHelper = new DBHelper(this);
+
+        String Title = txtTitle.getText().toString();
+        String Director = txtDirector.getText().toString();
+        String Release = txtDate.getText().toString();
+        String Duration = txtTime.getText().toString();
+
+        if(Title.isEmpty()||Director.isEmpty()||Release.isEmpty()||Duration.isEmpty()){
+            Toast.makeText(this,"select title,director,release date,duration",
+                    Toast.LENGTH_SHORT).show();
+        }else {
+            dbHelper.deleteinfo(Title);
+            Toast.makeText(this,"select item deleted",Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void setMainCategoryRecycler(List<AllCategory> allCategoryList){
-        mainCategoryRecycler = findViewById(R.id.main_recycler);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        mainCategoryRecycler.setLayoutManager(layoutManager);
-        mainRecyclerAdapter = new MainRecyclerAdapter(this,allCategoryList);
-        mainCategoryRecycler.setAdapter(mainRecyclerAdapter);
-
     }
 }
