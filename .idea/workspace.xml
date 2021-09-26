@@ -22,19 +22,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="687a5f85-2ff2-4df6-9982-a09b5b8d6ffd" name="Default Changelist" comment="Hi this is test">
-      <change afterPath="$PROJECT_DIR$/.idea/GIT.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="687a5f85-2ff2-4df6-9982-a09b5b8d6ffd" name="Default Changelist" comment="Hi this is test2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1yfGlCSEgJxiWmUcojk0nYbcvHW" />
@@ -63,7 +62,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632636061201</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Hi this is test2">
+      <created>1632638941376</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1632638941376</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -79,7 +85,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Hi this is test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hi this is test" />
+    <MESSAGE value="Hi this is test2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hi this is test2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1632635409425">
@@ -90,9 +97,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1632636080769" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1632636309366">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1632638948894">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1632636309366" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1632638948894" />
   </component>
 </project>
