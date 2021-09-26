@@ -1,203 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:background="#151C25"
-        android:padding="20dp">
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="144dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="65dp"
+        android:text="@string/btn_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-        <Button
-            android:id="@+id/logout_btn"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="250dp"
-            android:backgroundTint="@color/white"
-            android:text="Logout"
-            android:textColor="@color/black"
-            android:textSize="13dp" />
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="144dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:text="@string/btn_delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTime" />
 
-        <ImageView
-            android:id="@+id/logo_image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/logo" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/showTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-        <ImageView
-            android:id="@+id/profile_image"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_above="@id/full_name"
-            android:layout_centerInParent="true"
-            android:src="@drawable/Andrew" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/showDirector"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/showRelease"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <TextView
-            android:id="@+id/full_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/name_id"
-            android:layout_centerInParent="true"
-            android:text="ANDREW JOE"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/showDuration"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-        <TextView
-            android:id="@+id/name_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-            android:text="andrew_joe"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp" />
+    <EditText
+        android:id="@+id/txtTitle"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/textTitle"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <Button
-            android:id="@+id/editprofile"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="271dp"
-            android:layout_toRightOf="@+id/profile_image"
-            android:backgroundTint="@color/white"
-            android:text="Edit"
-            android:textColor="@color/black"
-            android:textSize="13dp" />
+    <EditText
+        android:id="@+id/txtDirector"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/textDirector"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <EditText
+        android:id="@+id/txtDate"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/textRelease"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    </RelativeLayout>
+    <EditText
+        android:id="@+id/txtTime"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/textDuration"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#151C25"
-        android:orientation="vertical"
-        android:padding="20dp">
-
-       <TextView
-            android:id="@+id/mrs_text"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:textSize="16dp"
-            android:text="Most Rated Show"
-            android:padding="10dp"
-            android:textColor="@color/white">
-
-
-
-        </TextView>
-
-        <TextView
-            android:id="@+id/trs_text"
-            android:layout_width="180dp"
-            android:layout_height="40dp"
-            android:textSize="16dp"
-            android:padding="10dp"
-            android:layout_marginTop="20dp"
-            android:text="Total Rated Shows"
-            android:textColor="@color/white">
-
-        </TextView>
-
-        <TextView
-            android:id="@+id/tws_text"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:textSize="16dp"
-            android:padding="10dp"
-            android:layout_marginTop="20dp"
-            android:text="Total Watch Time"
-            android:textColor="@color/white">
-
-        </TextView>
-
-        <TextView
-            android:id="@+id/fc_text"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:textSize="16dp"
-            android:padding="10dp"
-            android:layout_marginTop="20dp"
-            android:text="Favorite Category"
-            android:textColor="@color/white"/>
-
-
-        <Button
-
-            android:id="@+id/reset_btn"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="230dp"
-            android:backgroundTint="@color/white"
-            android:text="Reset Data"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"
-            android:textSize="13dp">
-
-
-        </Button>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:orientation="vertical"
-        android:padding="20dp">
-
-        <Button
-
-            android:id="@+id/home_btn"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="-05dp"
-            app:icon="@drawable/home"
-            app:iconPadding="30dp"
-            app:iconTint="@color/black"
-            app:iconTintMode="add">
-
-        </Button>
-
-        <Button
-
-            android:id="@+id/user_btn"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginLeft="320dp"
-            android:layout_marginTop="-55dp"
-            app:icon="@drawable/user"
-            app:iconPadding="28dp">
-
-        </Button>
-
-        <Button
-
-            android:id="@+id/reel_btn"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginLeft="110dp"
-            android:layout_marginTop="-55dp"
-            app:icon="@drawable/reel">
-
-        </Button>
-
-        <Button
-
-            android:id="@+id/tv_btn"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginLeft="220dp"
-            android:layout_marginTop="-55dp"
-            app:icon="@drawable/tv">
-
-        </Button>
-
-
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="262dp"
+        android:layout_height="199dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/TvshowPic"
+        tools:layout_editor_absoluteY="16dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
